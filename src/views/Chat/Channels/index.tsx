@@ -1,5 +1,9 @@
 import { collection, FirestoreDataConverter, query } from 'firebase/firestore';
+import { useEffect } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { twMerge } from 'tailwind-merge';
+
+import useChatStore from '@/stores/useChatStore';
 
 import { db } from '@/config/firebase';
 import { IChannel } from '@/utils/types';
@@ -14,22 +18,28 @@ const converter: FirestoreDataConverter<unknown> = {
 };
 
 const Channels = () => {
-  const q = query(
-    collection(db, 'channel')
-    // where('members', 'array-contains', 'jim')
-  );
+  const { setActiveChannel, channel } = useChatStore((state) => ({
+    setActiveChannel: state.setActiveChannel,
+    channel: state.channel,
+  }));
+
+  const q = query(collection(db, 'channel'));
   const [channels] = useCollectionData(q.withConverter(converter));
 
-  // const getChannels = async () => {
-  //   const querySnapshot = await getDocs(collection(db, 'channel'));
-  //   console.log(querySnapshot);
-  // };
+  useEffect(() => {
+    // Update state of active channel on change of channels
+    if (channel) {
+      const activeChannel = channels?.find((item) => item?.id === channel.id);
+      setActiveChannel(activeChannel as IChannel);
+    }
+  }, [channels, channel, setActiveChannel]);
 
-  // useEffect(() => {
-  //   getChannels();
-  // }, []);
   return (
-    <div className='bordered my-2 flex w-full max-w-[230px] flex-col flex-nowrap gap-y-2 border-r-[1px] border-stone-600'>
+    <div
+      className={twMerge(
+        'bordered my-2 flex w-max max-w-[230px] flex-col flex-nowrap gap-y-2 border-r-[1px] border-stone-600 sm:w-full'
+      )}
+    >
       {channels?.map((channel) => (
         <Channel key={channel.id} {...(channel as IChannel)} />
       ))}

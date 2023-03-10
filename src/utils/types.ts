@@ -1,3 +1,7 @@
+export type TIconProps = {
+  className?: string;
+};
+
 export interface IChannel {
   id: string;
   name: string;
@@ -5,3 +9,9 @@ export interface IChannel {
 }
 
 export type TChannels = IChannel[];
+
+export type TMessage = {
+  createdBy: string;
+  dateCreation: unknown;
+  message: string;
+};
