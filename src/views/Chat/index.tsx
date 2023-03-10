@@ -1,4 +1,5 @@
 import isEmpty from 'lodash/isEmpty';
+import { ToastContainer } from 'react-toastify';
 
 import useChatStore from '@/stores/useChatStore';
 
@@ -12,7 +13,7 @@ const ChatView = () => {
   }));
 
   return (
-    <div className='flex h-full max-h-[640px] w-full  max-w-3xl flex-col rounded-xl bg-stone-800'>
+    <div className='relative flex h-full max-h-[640px] w-full  max-w-3xl flex-col rounded-xl bg-stone-800'>
       <ChatHeader />
       <div className='flex flex-grow'>
         {!isEmpty(user) && (
@@ -22,6 +23,11 @@ const ChatView = () => {
           </>
         )}
       </div>
+      <ToastContainer
+        className='toast--container'
+        limit={2}
+        position='bottom-right'
+      />
     </div>
   );
 };

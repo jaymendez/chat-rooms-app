@@ -30,6 +30,7 @@ const ChatRoom = () => {
           <Conversation
             channelSource={channelMessageSource}
             endChat={<div ref={endChatRef} />}
+            doesUserBelong={doesUserBelong}
           />
           <ChatInput
             channelRef={channelMessageSource}

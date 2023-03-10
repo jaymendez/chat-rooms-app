@@ -91,8 +91,13 @@
     @apply min-h-[calc(100vh-56px)];
   }
 
-  html, body, #__next {
+  html,
+  body,
+  #__next {
     height: 100%;
+  }
+  .toast--container {
+    position: absolute !important;
   }
 }
 
