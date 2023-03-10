@@ -22,12 +22,18 @@ const JoinChannel = () => {
 
   return (
     <div className='flex h-full items-center justify-center'>
-      <button
-        className='rounded-lg bg-sky-700 p-2 text-xl tracking-widest text-stone-200'
-        onClick={handleClick}
-      >
-        Join Channel
-      </button>
+      {channel?.id ? (
+        <button
+          className='rounded-lg bg-sky-700 p-2 text-xl tracking-wider text-stone-200'
+          onClick={handleClick}
+        >
+          Join Channel
+        </button>
+      ) : (
+        <div className='text-xl tracking-wider text-stone-200'>
+          Please select a channel
+        </div>
+      )}
     </div>
   );
 };
