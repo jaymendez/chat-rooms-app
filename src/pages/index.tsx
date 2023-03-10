@@ -9,7 +9,6 @@ export default function ChatPage() {
       <Seo />
 
       <div className='align-items relative flex h-full items-center justify-center px-4'>
-        <header></header>
         <ChatView />
       </div>
     </Layout>
