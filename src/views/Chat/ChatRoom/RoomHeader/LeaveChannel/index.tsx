@@ -11,7 +11,7 @@ const LeaveChannel = () => {
   }));
 
   const handleClick = async () => {
-    const ref = doc(db, `/channel/${channel?.id}`);
+    const ref = doc(db, `/channels/${channel?.id}`);
     if (currentUser?.uid) {
       await updateDoc(ref, {
         ...channel,

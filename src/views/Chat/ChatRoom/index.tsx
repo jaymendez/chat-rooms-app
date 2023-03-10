@@ -20,7 +20,7 @@ const ChatRoom = () => {
     [channel, currentUser]
   );
 
-  const channelMessageSource = `channel/${channel?.id || 1}/messages`;
+  const channelMessageSource = `channels/${channel?.id || 1}/messages`;
 
   return (
     <div className={twMerge('flex h-full w-full flex-col gap-y-4')}>

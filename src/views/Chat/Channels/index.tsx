@@ -23,7 +23,7 @@ const Channels = () => {
     channel: state.channel,
   }));
 
-  const q = query(collection(db, 'channel'));
+  const q = query(collection(db, 'channels'));
   const [channels] = useCollectionData(q.withConverter(converter));
 
   useEffect(() => {

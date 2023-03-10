@@ -50,7 +50,9 @@ const Message = ({
         </span>
       )}
       <span
-        title={new Date(dateCreation.toDate()).toLocaleString()}
+        title={
+          dateCreation ? new Date(dateCreation?.toDate()).toLocaleString() : ''
+        }
         className={twMerge(
           'w-max rounded-full bg-stone-600 py-2 px-4 text-stone-200'
         )}
