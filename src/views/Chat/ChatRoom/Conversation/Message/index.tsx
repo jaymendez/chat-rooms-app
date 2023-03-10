@@ -54,7 +54,7 @@ const Message = ({
           dateCreation ? new Date(dateCreation?.toDate()).toLocaleString() : ''
         }
         className={twMerge(
-          'w-max rounded-full bg-stone-600 py-2 px-4 text-stone-200'
+          'w-max max-w-[330px] rounded-2xl bg-stone-600 py-2 px-4 text-stone-200'
         )}
       >
         {message}
