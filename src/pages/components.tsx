@@ -93,7 +93,7 @@ export default function ComponentsPage() {
                       </option>
                     ))}
                   </select>
-                  <ButtonLink href='https://github.com/theodorusclarence/ts-nextjs-tailwind-starter/blob/main/src/styles/colors.css'>
+                  <ButtonLink href='https://tailwindcss.com/docs/customizing-colors'>
                     Check list of colors
                   </ButtonLink>
                 </div>
@@ -138,7 +138,7 @@ export default function ComponentsPage() {
                 </p>
                 <div className='space-x-2'>
                   <UnstyledLink href='/'>Internal Links</UnstyledLink>
-                  <UnstyledLink href='https://theodorusclarence.com'>
+                  <UnstyledLink href='https://tailwindcss.com/'>
                     Outside Links
                   </UnstyledLink>
                 </div>
@@ -151,7 +151,7 @@ export default function ComponentsPage() {
                 </p>
                 <div className='space-x-2'>
                   <PrimaryLink href='/'>Internal Links</PrimaryLink>
-                  <PrimaryLink href='https://theodorusclarence.com'>
+                  <PrimaryLink href='https://tailwindcss.com/'>
                     Outside Links
                   </PrimaryLink>
                 </div>
@@ -164,7 +164,7 @@ export default function ComponentsPage() {
                 </p>
                 <div className='space-x-2'>
                   <UnderlineLink href='/'>Internal Links</UnderlineLink>
-                  <UnderlineLink href='https://theodorusclarence.com'>
+                  <UnderlineLink href='https://tailwindcss.com/'>
                     Outside Links
                   </UnderlineLink>
                 </div>
@@ -203,36 +203,27 @@ export default function ComponentsPage() {
                   Button styled link with 3 variants.
                 </p>
                 <div className='flex flex-wrap gap-2'>
-                  <ButtonLink
-                    variant='primary'
-                    href='https://theodorusclarence.com'
-                  >
+                  <ButtonLink variant='primary' href='https://tailwindcss.com/'>
                     Primary Variant
                   </ButtonLink>
                   <ButtonLink
                     variant='outline'
                     isDarkBg={mode === 'dark'}
-                    href='https://theodorusclarence.com'
+                    href='https://tailwindcss.com/'
                   >
                     Outline Variant
                   </ButtonLink>
                   <ButtonLink
                     variant='ghost'
                     isDarkBg={mode === 'dark'}
-                    href='https://theodorusclarence.com'
+                    href='https://tailwindcss.com/'
                   >
                     Ghost Variant
                   </ButtonLink>
-                  <ButtonLink
-                    variant='dark'
-                    href='https://theodorusclarence.com'
-                  >
+                  <ButtonLink variant='dark' href='https://tailwindcss.com/'>
                     Dark Variant
                   </ButtonLink>
-                  <ButtonLink
-                    variant='light'
-                    href='https://theodorusclarence.com'
-                  >
+                  <ButtonLink variant='light' href='https://tailwindcss.com/'>
                     Light Variant
                   </ButtonLink>
                 </div>

@@ -2,14 +2,24 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
+import {
+  apiKey,
+  appId,
+  authDomain,
+  measurementId,
+  messagingSenderId,
+  projectId,
+  storageBucket,
+} from '@/config';
+
 const firebaseConfig = {
-  apiKey: 'AIzaSyCzX9WcEN59pr9tfhlOpLFYiy0yNtGU31s',
-  authDomain: 'chat-rooms-d2869.firebaseapp.com',
-  projectId: 'chat-rooms-d2869',
-  storageBucket: 'chat-rooms-d2869.appspot.com',
-  messagingSenderId: '164246899597',
-  appId: '1:164246899597:web:eb76b7fddf5254264dcbc4',
-  measurementId: 'G-9V39Y8TKC3',
+  apiKey,
+  authDomain,
+  projectId,
+  storageBucket,
+  messagingSenderId,
+  appId,
+  measurementId,
 };
 
 const app = initializeApp(firebaseConfig);
