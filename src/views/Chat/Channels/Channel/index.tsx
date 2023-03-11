@@ -28,7 +28,7 @@ const Channel = ({ id, name, members, key }: TChannelProps) => {
           <div className=''>{getNameInitials(name)}</div>
         ) : (
           <div className='flex flex-row items-center gap-x-3'>
-            <div className='flex h-10 w-10 items-center justify-center rounded-full bg-red-400'>
+            <div className='flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-red-400'>
               {getNameInitials(name)}
             </div>
             <div className=''>{name}</div>

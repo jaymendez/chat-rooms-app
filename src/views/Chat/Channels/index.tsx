@@ -1,4 +1,10 @@
-import { collection, FirestoreDataConverter, query } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  FirestoreDataConverter,
+  query,
+  setDoc,
+} from 'firebase/firestore';
 import { useEffect } from 'react';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { twMerge } from 'tailwind-merge';
@@ -7,6 +13,7 @@ import useChatStore from '@/stores/useChatStore';
 
 import { db } from '@/config/firebase';
 import { IChannel } from '@/utils/types';
+import AddChannel from '@/views/Chat/Channels/AddChannel';
 import Channel from '@/views/Chat/Channels/Channel';
 
 const converter: FirestoreDataConverter<unknown> = {
@@ -34,6 +41,21 @@ const Channels = () => {
     }
   }, [channels, channel, setActiveChannel]);
 
+  const createFirstChannel = async () => {
+    const channelSource = `channels`;
+    const ref = doc(collection(db, channelSource));
+    await setDoc(ref, {
+      name: 'My first channel',
+      members: [],
+    });
+  };
+
+  useEffect(() => {
+    if (channels?.length === 0) {
+      createFirstChannel();
+    }
+  }, [channels]);
+
   return (
     <div
       className={twMerge(
@@ -43,6 +65,7 @@ const Channels = () => {
       {channels?.map((channel) => (
         <Channel key={channel.id} {...(channel as IChannel)} />
       ))}
+      {channels?.length <= 5 && <AddChannel />}
     </div>
   );
 };
