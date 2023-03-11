@@ -20,23 +20,25 @@ const ChatRoom = () => {
     [channel, currentUser]
   );
 
-  const channelMessageSource = `channels/${channel?.id || 1}/messages`;
+  const channelMessageSource = `channels/${channel?.id}/messages`;
 
   return (
     <div className={twMerge('flex h-full w-full flex-col gap-y-4')}>
       <RoomHeader doesUserBelong={doesUserBelong} />
       {doesUserBelong ? (
-        <>
-          <Conversation
-            channelSource={channelMessageSource}
-            endChat={<div ref={endChatRef} />}
-            doesUserBelong={doesUserBelong}
-          />
-          <ChatInput
-            channelRef={channelMessageSource}
-            endChatRef={endChatRef}
-          />
-        </>
+        channel?.id && (
+          <>
+            <Conversation
+              channelSource={channelMessageSource}
+              endChat={<div ref={endChatRef} />}
+              doesUserBelong={doesUserBelong}
+            />
+            <ChatInput
+              channelRef={channelMessageSource}
+              endChatRef={endChatRef}
+            />
+          </>
+        )
       ) : (
         <JoinChannel />
       )}
