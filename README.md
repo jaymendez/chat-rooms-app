@@ -27,7 +27,8 @@
 
 ### 1. Clone this repository:
 
-![Use as template](https://user-images.githubusercontent.com/55318172/129183039-1a61e68d-dd90-4548-9489-7b3ccbb35810.png)
+![Clone](https://user-images.githubusercontent.com/28770143/224444061-7e1adc8d-3e81-4a63-8ef7-5f45a0683c09.png)
+
 
 ### 2. Install dependencies
 
@@ -37,8 +38,42 @@ It is encouraged to use **yarn** so the husky hooks can work properly.
 yarn install
 ```
 
-### 3. Setup your firebase
+### 3. Setup and configure your firebase
 
-### 4. Add your config on sample.env and rename to .env
+1. Follow this link in order to create a firebase project 👉 https://firebase.google.com/docs/web/setup#create-project
+2. Copy your firebase config and Add it sample.env and rename to .env
+3. Enable authentication for google on firebase
+![image](https://user-images.githubusercontent.com/28770143/224446881-6731d17e-fa65-4081-b1e7-c8469a82ad96.png)
+
+4. Configure your firestore rules, copy the rules below and paste it on your rules.
+
+```bash
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if true;
+    }
+    
+    match /messages/{docId} {
+    	allow read: if request.auth.uid != null
+    	allow create: if canCreateMessage();
+    }
+    
+    function canCreateMessage() {
+    	let isSignedIn = request.auth.uid != null;
+    	let isOwner = request.auth.uid == request.resource.data.uid;
+    
+    	return isSignedIn && isOwner;
+    }
+  }
+}
+```
+
+![image](https://user-images.githubusercontent.com/28770143/224444254-95b1a1b7-6bc1-4f50-8535-23f06ca39484.png)
 
 ### 5. Run the development server
+
+```bash
+yarn run dev
+```
