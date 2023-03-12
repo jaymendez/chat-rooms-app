@@ -14,7 +14,7 @@ const SignOutButton = () => {
       className='rounded-md bg-red-600 py-1 px-2 text-sm text-stone-200'
       onClick={() => {
         signOut(auth);
-        setCurrentUser({});
+        setCurrentUser(null);
       }}
     >
       Sign out
