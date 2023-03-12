@@ -18,10 +18,14 @@ import Channel from '@/views/Chat/Channels/Channel';
 
 const converter: FirestoreDataConverter<unknown> = {
   toFirestore: (data) => data,
-  fromFirestore: (snap) => ({
-    id: snap?.id,
-    ...snap.data(),
-  }),
+  fromFirestore: (snap): IChannel => {
+    const data = snap.data();
+    return {
+      id: snap?.id,
+      name: data.name,
+      members: data.members,
+    };
+  },
 };
 
 const Channels = () => {
@@ -36,7 +40,9 @@ const Channels = () => {
   useEffect(() => {
     // Update state of active channel on change of channels
     if (channel) {
-      const activeChannel = channels?.find((item) => item?.id === channel.id);
+      const activeChannel = channels?.find(
+        (item: IChannel) => item?.id === channel.id
+      );
       setActiveChannel(activeChannel as IChannel);
     }
   }, [channels, channel, setActiveChannel]);
@@ -62,8 +68,8 @@ const Channels = () => {
         'bordered my-2 flex w-max max-w-[230px] flex-col flex-nowrap gap-y-2 border-r-[1px] border-stone-600 sm:w-full'
       )}
     >
-      {channels?.map((channel) => (
-        <Channel key={channel.id} {...(channel as IChannel)} />
+      {channels?.map((channel: IChannel) => (
+        <Channel key={channel.id} {...channel} />
       ))}
       {channels?.length <= 5 && <AddChannel />}
     </div>

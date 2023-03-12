@@ -19,14 +19,14 @@ const ChatInput = ({ channelRef, endChatRef }: TChatInputProps) => {
     e.preventDefault();
     const ref = doc(collection(db, channelRef));
     await setDoc(ref, {
-      message: e.target.message.value,
+      message: (e.target as HTMLFormElement).message.value,
       createdBy: currentUser?.uid,
       photoUrl: currentUser?.photoURL,
       name: currentUser?.displayName,
       dateCreation: Timestamp.fromDate(new Date()),
     });
     endChatRef?.current?.scrollIntoView({ behavior: 'smooth' });
-    e.target.message.value = '';
+    (e.target as HTMLFormElement).message.value = '';
   };
 
   return (

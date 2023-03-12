@@ -15,3 +15,7 @@ export type TMessage = {
   dateCreation: unknown;
   message: string;
 };
+
+export type HTMLElementEvent<T extends HTMLElement> = Event & {
+  target: T;
+};
