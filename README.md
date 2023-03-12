@@ -2,6 +2,7 @@
 
 <div align="center">
   <h2>🔥 nextjs-chat-app</h2>
+  <p> LIVE DEMO: https://next-chat-room.vercel.app </p>
   <p>a practice Chat Room app made with Next.js, Firebase and Tailwind</p>
   <p>Made by Jay Mendez</p>
 </div>
